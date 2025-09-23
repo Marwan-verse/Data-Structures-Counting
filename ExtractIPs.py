@@ -1,5 +1,6 @@
 import time
 import re
+import json
 from collections import defaultdict
 
 uniqueIPs = list()
@@ -29,6 +30,11 @@ def main():
                 if ip:
                     counts[ip] += 1
 
+
+    with open('failed_counts.txt', 'w') as f:  
+        f.write(json.dumps(counts, indent=2))   
+
+
     print("Lines read:", counter)
     print("Unique IPs found:", len(counts))
 
@@ -45,4 +51,6 @@ if __name__ == "__main__":
 start = time.time()
 # run counting
 end = time.time()
-print("Elapsed:", "{:.10f}".format(end-start), "seconds")
+print("Elapsed:", "{:.8f}".format(end-start), "seconds")
+with open('timesSaved.log', 'a') as f:  
+        f.write("\nElapsed: " + "{:.8f}".format(end-start) + " seconds\n")
