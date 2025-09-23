@@ -45,4 +45,4 @@ if __name__ == "__main__":
 start = time.time()
 # run counting
 end = time.time()
-print("Elapsed:", end-start, "seconds")
+print("Elapsed:", "{:.10f}".format(end-start), "seconds")
